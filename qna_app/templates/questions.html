@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Questions</h1>
+ 
+
+    <table>
+            <tr>
+                <th>S.N</th>
+                <th>Title</th>
+                <th>Question Description</th>
+                <th>Timestamp</th>
+                <th>Image</th>
+            </tr>
+            {% for q in question %}
+            <tr>
+            <td>{{ forloop.counter}}</td>
+            <td>{{q.title}}</td>
+            <td> {{q.question_descp}}</td>
+            <td>{{q.timestamp}}</td>
+            <td><img src="../../media/{{q.question_img}}" style="width: 200px; height:200px;"
+                /></td>
+                <td><a href="{% url 'qna:ans' q.id %}"><button>Answer</button></a></td>
+                <td><a href="{% url 'qna:vote_qn' q.id %}"><button>Vote</button></a></td>
+                <td><a href="{% url 'qna:update' q.id %}"><button>Update</button></a></td>
+                <td><a href="{% url 'qna:delete' q.id %}"><button>Delete</button></a></td>
+            </tr>
+        {%endfor%}
+        
+        </table>
+        <a href="{% url 'qna:add' %}" ><button>Add</button></a>
+    
+    
+    
+</body>
+</html>
